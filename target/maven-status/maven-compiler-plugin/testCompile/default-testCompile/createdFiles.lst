@@ -1,0 +1,9 @@
+com\poorna\Pages\LoginPage.class
+com\poorna\Utils\TestDataReader.class
+com\poorna\Hooks\Hooks.class
+com\poorna\Utils\ConfigReader.class
+com\poorna\Tests\LoginPage.class
+com\poorna\Runner\Runner.class
+com\poorna\base\PlaywrightManager.class
+com\poorna\stepdefinitions\LoginSteps.class
+com\poorna\Utils\PlaywrightFactory.class
