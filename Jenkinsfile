@@ -1,13 +1,21 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+        jdk 'JDK17'
+    }
+
     options {
         timestamps()
         disableConcurrentBuilds()
     }
 
-    environment {
-        HEADLESS = 'true'
+    parameters {
+        choice(name: 'BROWSER', choices: ['chromium', 'firefox', 'webkit'], description: 'Browser to run tests against')
+        booleanParam(name: 'HEADLESS', defaultValue: true, description: 'Run browsers in headless mode')
+        booleanParam(name: 'RUN_LOGIN_SUITE', defaultValue: true, description: 'Run the @Login suite (required check)')
+        booleanParam(name: 'RUN_AMAZON_SUITE', defaultValue: true, description: 'Run the @Amazon suite (non-blocking)')
     }
 
     stages {
@@ -19,13 +27,16 @@ pipeline {
 
         stage('Install Playwright Browsers') {
             steps {
-                runMaven('exec:java@install-playwright-browsers')
+                runMaven("exec:java@install-playwright-browsers")
             }
         }
 
         stage('Login Suite (required)') {
+            when {
+                expression { params.RUN_LOGIN_SUITE }
+            }
             steps {
-                runMaven('test -Dcucumber.filter.tags="@Login" -Dheadless=true')
+                runMaven("test -Dcucumber.filter.tags=@Login -Dbrowser=${params.BROWSER} -Dheadless=${params.HEADLESS}")
             }
             post {
                 always {
@@ -36,9 +47,12 @@ pipeline {
         }
 
         stage('Amazon Suite (non-blocking)') {
+            when {
+                expression { params.RUN_AMAZON_SUITE }
+            }
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
-                    runMaven('test -Dcucumber.filter.tags="@Amazon" -Dheadless=true')
+                    runMaven("test -Dcucumber.filter.tags=@Amazon -Dbrowser=${params.BROWSER} -Dheadless=${params.HEADLESS}")
                 }
             }
             post {
