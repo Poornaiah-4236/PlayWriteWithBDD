@@ -1,0 +1,48 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Install Playwright browsers
+        run: mvn -B exec:java@install-playwright-browsers
+
+      - name: Run Login suite (required)
+        run: mvn -B test -Dcucumber.filter.tags="@Login" -Dheadless=true
+
+      - name: Archive Login reports
+        if: always()
+        run: |
+          mkdir -p reports/login
+          cp -r target/extent-reports target/cucumber-reports target/surefire-reports reports/login/ 2>/dev/null || true
+
+      - name: Run Amazon suite (non-blocking)
+        if: always()
+        continue-on-error: true
+        run: mvn -B test -Dcucumber.filter.tags="@Amazon" -Dheadless=true
+
+      - name: Archive Amazon reports
+        if: always()
+        run: |
+          mkdir -p reports/amazon
+          cp -r target/extent-reports target/cucumber-reports target/surefire-reports reports/amazon/ 2>/dev/null || true
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: reports/**

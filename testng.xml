@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.poorna.Hooks.Hooks"/>
+      <class name="com.poorna.Runner.Runner"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

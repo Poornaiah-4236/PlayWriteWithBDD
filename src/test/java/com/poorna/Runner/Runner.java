@@ -1,17 +1,20 @@
 package com.poorna.Runner;
-import org.junit.runner.RunWith;
+
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-import io.cucumber.junit.Cucumber;
-@RunWith(Cucumber.class)
+
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = {"com.poorna.stepdefinitions", "com.poorna.Hooks"},
-        plugin = {"pretty", "html:target/cucumber-reports.html"},
+        plugin = {
+                "pretty",
+                "html:target/cucumber-reports/cucumber-report.html",
+                "json:target/cucumber-reports/cucumber.json",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
+        },
         dryRun = false,
-        monochrome = true,
-        tags = "@Amazon"
+        monochrome = true
 )
-public class Runner extends AbstractTestNGCucumberTests{
+public class Runner extends AbstractTestNGCucumberTests {
 
 }

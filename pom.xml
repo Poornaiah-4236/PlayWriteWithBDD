@@ -3,6 +3,12 @@
   <groupId>PlayWrightBDD</groupId>
   <artifactId>PlayWrightBDD</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <dependencies>
 
     <!-- Playwright -->
@@ -33,23 +39,68 @@
         <artifactId>cucumber-testng</artifactId>
         <version>7.14.0</version>
     </dependency>
-	<dependency>
-	    <groupId>org.slf4j</groupId>
-	    <artifactId>slf4j-simple</artifactId>
-	    <version>2.0.9</version>
-	</dependency>
-    <!-- Gherkin Parser -->
+
     <dependency>
-        <groupId>io.cucumber</groupId>
-        <artifactId>gherkin</artifactId>
-        <version>26.2.0</version>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-simple</artifactId>
+        <version>2.0.9</version>
     </dependency>
-	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>7.15.0</version>
-			<scope>test</scope>
-		</dependency>
-</dependencies>
+
+    <!-- ExtentReports + Cucumber7 adapter -->
+    <dependency>
+        <groupId>com.aventstack</groupId>
+        <artifactId>extentreports</artifactId>
+        <version>5.1.1</version>
+    </dependency>
+    <dependency>
+        <groupId>tech.grasshopper</groupId>
+        <artifactId>extentreports-cucumber7-adapter</artifactId>
+        <version>1.14.0</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>17</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.5</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>install-playwright-browsers</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>com.microsoft.playwright.CLI</mainClass>
+              <arguments>
+                <argument>install</argument>
+                <argument>--with-deps</argument>
+                <argument>chromium</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 </project>
