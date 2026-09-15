@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Install Playwright Browsers",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["-B", "exec:java@install-playwright-browsers"],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Run Login Suite",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["-B", "test", "-Dcucumber.filter.tags=@Login", "-Dheadless=true"],
+      "problemMatcher": [],
+      "group": { "kind": "test", "isDefault": true }
+    },
+    {
+      "label": "Run Amazon Suite",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["-B", "test", "-Dcucumber.filter.tags=@Amazon", "-Dheadless=true"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run All Tests",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["-B", "test", "-Dheadless=true"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run All Tests (headed / visible browser)",
+      "type": "shell",
+      "command": "mvn",
+      "args": ["-B", "test", "-Dheadless=false"],
+      "problemMatcher": []
+    }
+  ]
+}
