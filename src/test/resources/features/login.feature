@@ -1,25 +1,22 @@
-#Author: your.email@your.domain.com
-#Keywords Summary :
-#Feature: List of scenarios.
-#Sample Feature Definition Template
-@LoginTest
-Feature: Title of your feature
-  @LoginTest
-  Scenario Outline: Login Test
-  Given User launches the application
-  #When User enters username "<username>" and password "<password>"
-  #Then User should see homepage
+Feature: Login
+  As a user of the Practice Test Automation login page
+  I want to log in with my credentials
+  So that I can access the protected area
 
-Examples:
-  | username | password |
-  | admin    | admin123 |
-  @Amazon
-  Scenario Outline: Amazon product search
-  Given User launches the application
-  When User searches for product "<product>"
-  #Then User should see homepage
+  @Login @Smoke
+  Scenario: Successful login with valid credentials
+    Given I am on the login page
+    When I log in with username "student" and password "Password123"
+    Then I should see the "Logged In Successfully" message
+    And I should see a logout link
 
-Examples:
-  | product | password |
-  | phones    | admin123 |
-  
+  @Login @Negative
+  Scenario Outline: Login fails with invalid credentials
+    Given I am on the login page
+    When I log in with username "<username>" and password "<password>"
+    Then I should see an error message "<errorMessage>"
+
+    Examples:
+      | username      | password      | errorMessage                  |
+      | incorrectUser | Password123   | Your username is invalid!     |
+      | student       | incorrectPass | Your password is invalid!     |

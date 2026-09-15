@@ -46,7 +46,6 @@ public class PlaywrightManager {
 			break;
 		case "chromium":
 			BrowserType.LaunchOptions chromiumOptions = new BrowserType.LaunchOptions()
-				.setChannel("chrome")
 				.setHeadless(headless)
 				.setArgs(args)
 				.setSlowMo((double) slowMo);

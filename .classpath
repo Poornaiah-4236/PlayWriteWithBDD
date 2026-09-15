@@ -36,69 +36,23 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/poorn/.m2/repository/com/microsoft/playwright/playwright/1.58.0/playwright-1.58.0.jar" sourcepath="C:/Users/poorn/.m2/repository/com/microsoft/playwright/playwright/1.58.0/playwright-1.58.0-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.microsoft.playwright"/>
-			<attribute name="maven.artifactId" value="playwright"/>
-			<attribute name="maven.version" value="1.58.0"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/poorn/.m2/repository/com/microsoft/playwright/playwright/1.54.0/playwright-1.54.0.jar" sourcepath="C:/Users/poorn/.m2/repository/com/microsoft/playwright/playwright/1.54.0/playwright-1.54.0-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.microsoft.playwright"/>
-			<attribute name="maven.artifactId" value="playwright"/>
-			<attribute name="maven.version" value="1.54.0"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/poorn/.m2/repository/net/sourceforge/htmlunit/htmlunit/2.18/htmlunit-2.18.jar" sourcepath="C:/Users/poorn/.m2/repository/net/sourceforge/htmlunit/htmlunit/2.18/htmlunit-2.18-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="net.sourceforge.htmlunit"/>
-			<attribute name="maven.artifactId" value="htmlunit"/>
-			<attribute name="maven.version" value="2.18"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/poorn/.m2/repository/com/aventstack/extentreports/5.1.1/extentreports-5.1.1.jar" sourcepath="C:/Users/poorn/.m2/repository/com/aventstack/extentreports/5.1.1/extentreports-5.1.1-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.aventstack"/>
-			<attribute name="maven.artifactId" value="extentreports"/>
-			<attribute name="maven.version" value="5.1.1"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/poorn/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar" sourcepath="C:/Users/poorn/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="com.google.code.findbugs"/>
-			<attribute name="maven.artifactId" value="jsr305"/>
-			<attribute name="maven.version" value="3.0.2"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/poorn/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.15.0/selenium-remote-driver-4.15.0.jar" sourcepath="C:/Users/poorn/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.15.0/selenium-remote-driver-4.15.0-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.seleniumhq.selenium"/>
-			<attribute name="maven.artifactId" value="selenium-remote-driver"/>
-			<attribute name="maven.version" value="4.15.0"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/poorn/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.16.1/selenium-remote-driver-4.16.1.jar" sourcepath="C:/Users/poorn/.m2/repository/org/seleniumhq/selenium/selenium-remote-driver/4.16.1/selenium-remote-driver-4.16.1-sources.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.seleniumhq.selenium"/>
-			<attribute name="maven.artifactId" value="selenium-remote-driver"/>
-			<attribute name="maven.version" value="4.16.1"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="src" path="target/generated-sources/annotations">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="target/generated-test-sources/test-annotations">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="ignore_optional_problems" value="true"/>
+			<attribute name="m2e-apt" value="true"/>
+			<attribute name="test" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
