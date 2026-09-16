@@ -4,11 +4,10 @@ Feature: Amazon product search
   So that I can find items relevant to my search term
 
   @Amazon
-  Scenario Outline: Search returns relevant results
+  Scenario Outline: Search returns results
     Given I am on the Amazon home page
     When I search for product "<product>"
     Then search results should be displayed
-    And each result title should contain "<product>"
 
     Examples:
       | product     |

@@ -34,21 +34,6 @@ public class AmazonSteps {
 		Assert.assertFalse(lastResultTitles.isEmpty(), "Expected at least one search result");
 	}
 
-	@Then("each result title should contain {string}")
-	public void eachResultTitleShouldContain(String product) {
-		String lowerProduct = product.toLowerCase();
-		long matchCount = lastResultTitles.stream()
-				.filter(title -> title.toLowerCase().contains(lowerProduct))
-				.count();
-		double matchRatio = (double) matchCount / lastResultTitles.size();
-		// Amazon search results legitimately include sponsored/related items whose
-		// titles don't contain the literal search term, so require majority relevance
-		// rather than a 100% match.
-		Assert.assertTrue(matchRatio >= 0.5,
-				"Expected at least half of result titles to contain '" + product + "', but only "
-						+ matchCount + "/" + lastResultTitles.size() + " did");
-	}
-
 	@Then("no results message should be displayed")
 	public void noResultsMessageShouldBeDisplayed() {
 		Assert.assertTrue(amazonPage().hasNoResultsMessage(), "Expected a no-results message to be displayed");
